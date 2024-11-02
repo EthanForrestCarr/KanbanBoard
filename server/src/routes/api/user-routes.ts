@@ -6,22 +6,16 @@ import {
   updateUser,
   deleteUser,
 } from '../../controllers/user-controller.js';
+import { authenticateToken } from '../../middleware/auth.js';
 
 const router = express.Router();
 
-// GET /users - Get all users
+router.use(authenticateToken);
+
 router.get('/', getAllUsers);
-
-// GET /users/:id - Get a user by id
 router.get('/:id', getUserById);
-
-// POST /users - Create a new user
 router.post('/', createUser);
-
-// PUT /users/:id - Update a user by id
 router.put('/:id', updateUser);
-
-// DELETE /users/:id - Delete a user by id
 router.delete('/:id', deleteUser);
 
 export { router as userRouter };
