@@ -10,7 +10,6 @@ import { authenticateToken } from '../../middleware/auth.js';
 
 const router = express.Router();
 
-// Apply authentication to all ticket routes
 router.use(authenticateToken);
 
 router.get('/', getAllTickets);
